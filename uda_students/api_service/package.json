@@ -4,7 +4,8 @@
   "description": "Peter Ocansey Uda Student API Service",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/PeterOcansey/kubernetes_demo/issues"
   },
-  "homepage": "https://github.com/PeterOcansey/kubernetes_demo#readme"
+  "homepage": "https://github.com/PeterOcansey/kubernetes_demo#readme",
+  "dependencies": {
+    "mongodb": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
