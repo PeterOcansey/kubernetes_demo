@@ -5,7 +5,7 @@ const assert = require('assert');
 const app = express();
 
 // Connection URL
-const url = "mongodb://mongoadmin:secret@localhost:27017";
+const url = "mongodb://mongodb:27017";
 
 // Database Name
 const dbName = 'student_db';
@@ -124,12 +124,9 @@ app.delete("/cms/students/:id/delete", (req, res) => {
             res.status(500).json({ err: err })
             return
         }
-
         res.status(200).json({ status: "success", message: `Student deleted successfully`, data: result })
     });
-})
+});
 
 
-
-
-app.listen(3000, () => console.log("Server ready"))
+app.listen(3006, () => console.log("Server ready"))

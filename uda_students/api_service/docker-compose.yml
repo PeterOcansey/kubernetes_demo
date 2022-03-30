@@ -1,0 +1,15 @@
+version: "3"
+services:
+  uda-api:
+    container_name: uda-api
+    restart: always
+    build: .
+    ports:
+      - "3006:3006"
+    links:
+      - mongodb
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - '27017:27017'
