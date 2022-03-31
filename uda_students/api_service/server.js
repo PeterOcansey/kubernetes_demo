@@ -3,6 +3,7 @@ const MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 const assert = require('assert');
 const app = express();
+const cors = require('cors');
 
 // Connection URL
 const url = "mongodb://mongodb:27017";
@@ -23,6 +24,7 @@ client.connect(function(err) {
 });
 
 app.use(express.json());
+app.use(cors());
 ////////////////////////////////////////////////////////////////////
 // Endpoint : /cms/students
 // Fetch students for front end app
