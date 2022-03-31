@@ -25,6 +25,7 @@ client.connect(function(err) {
 
 app.use(express.json());
 app.use(cors());
+app.options('*', cors());
 
 
 // Add headers
@@ -55,6 +56,8 @@ app.get("/students", (req, res) => {
     
     let students = DB.collection("students");
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     students.find().toArray((err, items) => {
         if (err) {
           console.error(err)
@@ -73,6 +76,9 @@ app.get("/students", (req, res) => {
 app.post("/cms/student", (req, res) => {
     const name = req.body.name
     let students = DB.collection("students");
+    
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     students.insertOne({ name: req.body.name, country: req.body.country, course: req.body.course }, (err, result) => {
       if (err) {
         console.error(err)
@@ -92,6 +98,8 @@ app.get("/cms/students", (req, res) => {
     
     let students = DB.collection("students");
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     students.find().toArray((err, items) => {
         if (err) {
           console.error(err)
@@ -108,6 +116,8 @@ app.get("/cms/students", (req, res) => {
 // Update students for front end app
 ////////////////////////////////////////////////////////////////////
 app.put("/cms/students/:id/update", (req, res) => {
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
     let students = DB.collection("students");
     const _id = new ObjectID(req.params.id);
@@ -140,7 +150,10 @@ app.put("/cms/students/:id/update", (req, res) => {
 // Delete students for front end app
 ////////////////////////////////////////////////////////////////////
 app.delete("/cms/students/:id/delete", (req, res) => {
-    let students = DB.collection("students");
+  
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  let students = DB.collection("students");
     const _id = new ObjectID(req.params.id);
     students.deleteOne( { "_id":  _id}, function(err, result){
         if (err) {
